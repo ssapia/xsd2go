@@ -26,17 +26,9 @@ func injectSchemaIntoAttributes(schema *Schema, intermAttributes []Attribute) []
 }
 
 func setXmlNameAnyForSingleElements(elements []Element) []Element {
-	if len(elements) == 1 {
-		result := make([]Element, 1)
-		element := elements[0]
-		element.XmlNameOverride = ",any"
-		result[0] = element
-		return result
-	} else {
-		for idx := range elements {
-			element := &elements[idx]
-			element.XmlNameOverride = ""
-		}
+	for idx := range elements {
+		element := &elements[idx]
+		element.XmlNameOverride = ""
 	}
 	return elements
 }
